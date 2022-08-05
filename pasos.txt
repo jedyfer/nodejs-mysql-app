@@ -1,0 +1,28 @@
+#   PASO 1
++ consola bash:
+npm init --yes
+
+#   PASO 2  
+npm install express express-handlebars express-session mysql express-mysql-session morgan bcryptjs passport passport-local timeago.js connect-flash express-validator
+
+express: framework de nodejs para la creación de aplicacioens backend
+express-handlebars: motor de plantillas
+express-session: administra las sessiones de nuestra app
+mysql: modulo para conectarse a mysql
+express-mysql-session: guarda las sessiones en la base de datos
+morgan: muestra las peticiones que llegan al servidor
+bcryptjs: modulo para cifrar las contraseñas
+passport: modulo para autenticar y manejar el proceso de Login
+passport-local: complemento para autenticar los usuarios con nuestra propia base de datos y no externo a traves de google, faceebok, etc
+timeago.js: convierte los timestamps o fechas de base de datos a un formato: 2 minutes ago, 2 hours ago, etc.
+connect-flash: modulo para mostrar mensajes de error
+express-validator: modulo para validar datos del usuario
+
+npm i nodemon -D
+
+nodemon: modulo de desarrollo
+
+/*
+    Nodejs y Mysql, Aplicación Completa (Login, Registro, CRUD, ES6+ y Más)
+    https://www.youtube.com/watch?v=qJ5R9WTW0_E
+*/
