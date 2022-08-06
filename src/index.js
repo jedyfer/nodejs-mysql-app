@@ -9,11 +9,11 @@ const app = express();
 //  settings
 app.set('port', process.env.PORT || 4000);  //  validacion: si hay un puerto definido usa ese sino usa el 4000
 app.set('views', path.join(__dirname, 'views')); //  dirname: obtiene el nombre del directorio que se esta ejecutando
-app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({  // le agregue exphbs.engine en lugar de exphbs 
     defaultLayout: 'main',
-    layoutDir: path.join(app.get('views'), 'layouts'),
+    layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs', //  configurar para que identifique .handlebars como .hbs
+    extname: '.hbs',
     helpers: require('./lib/handlebars')
 }))
 app.set('view engine', '.hbs');
