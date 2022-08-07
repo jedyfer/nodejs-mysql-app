@@ -20,6 +20,7 @@ router.post('/add', async (req, res) => {
     //  console.log(newLink);
     await pool.query('INSERT INTO links SET ?', [newLink]);
     //  res.send('received');
+    req.flash('success', 'Link added successfully');
     res.redirect('/links');
 });
 
@@ -29,16 +30,7 @@ router.get('/', async (req, res) => {
     res.render('links/list', { links });
 });
 
-router.get('/delete/:id', async (req, res) => {
-    //  console.log(req.params.id);
-    //  res.send('Deleted');
-    const { id } = req.params;
-
-    pool.query('DELETE FROM links WHERE idlink = ?', [id]);
-
-    res.redirect('/links');
-});
-
+/* edit */
 router.get('/edit/:id', async (req, res) => {
     const { id } = req.params;
     
@@ -56,9 +48,22 @@ router.post('/edit/:id', async (req, res) => {
         title,
         url,
         description
-    }
+    };
 
     pool.query('UPDATE links SET ? WHERE idlink = ?', [ newLink, id ]);
+    req.flash('success', 'Link edited successfully');
+    res.redirect('/links');
+});
+
+/* delete */
+router.get('/delete/:id', async (req, res) => {
+    //  console.log(req.params.id);
+    //  res.send('Deleted');
+    const { id } = req.params;
+
+    pool.query('DELETE FROM links WHERE idlink = ?', [id]);
+
+    req.flash('success', 'Link removed successfully');
     res.redirect('/links');
 });
 
